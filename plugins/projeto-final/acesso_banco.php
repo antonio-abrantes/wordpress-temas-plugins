@@ -37,13 +37,29 @@ class anuncios
 
 			$imagem_url = wp_get_attachment_url(get_post_thumbnail_id());
 
-			echo '<a href="' . $link_anuncio . '" target="_blank">';
+			require('includes/item-anuncio.php');
 
-			echo '<img src="' . $imagem_url . '" style="margin-top: 5px;" />';
-
-			echo '</a>';
+			self::gravarLog(get_the_title());
 
 		}
+	}
+
+	static function gravarLog($tituloAnuncio){
+		global $wpdb;
+
+		$nome_tabela = $wpdb->prefix . 'anuncio_logs';
+		$agora = date('Y-m-d h:i:s');
+
+		$wpdb->insert(
+			$nome_tabela,
+			[
+				'name_post' => $tituloAnuncio,
+				'dt_hr' => $agora
+			],
+			[
+				'%s', '%s'
+			]
+		);
 	}
 }
 

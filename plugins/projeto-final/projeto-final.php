@@ -29,5 +29,8 @@ require_once('acesso_banco.php');
 //Responsável pela criação e exição do Widget 
 require_once('widget.php'); 
  
-//Contém a criação do Shortcode e do dashboard Widget 
-require_once('shortcode_dashboard.php');
+//Contém a criação do Shortcode 
+require_once('shortcode.php');
+
+//Contém a criação do dashboard Widget 
+require_once('dashboard.php');
